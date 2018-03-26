@@ -8,11 +8,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+var api = 'api/whoami/';
+
 
 //Get CALL to return JSON thats format natural and unix date
 app.get("/API/header", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
-})
+});
 
 
 
