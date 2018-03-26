@@ -7,13 +7,22 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-
+//API url
 var api = 'api/whoami/';
 
 
+
+
+
 //Get CALL to return JSON thats format natural and unix date
-app.get("/API/header", (request, response) => {
-  response.sendFile(__dirname + '/views/index.html')
+app.get(api, function(req, res) {
+  
+  var language = req.acceptsLanguages();
+  var software = req.get('User-Agent');
+  var ipaddress = req.ip;
+  
+  res.json({'ipaddress': ipaddress, 'language': language[0], 'software': software });
+  
 });
 
 
